@@ -1,0 +1,7 @@
+{
+  "name": "Notes",
+  "version": "0.1",
+  "permissions": ["tabs", "*://*/*"],
+  "background_page": "background.html",
+  "manifest_version": 2
+}
