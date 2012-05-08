@@ -22,11 +22,12 @@ function getNoteServer()
 
 $(function()
 {
-    var json = getNotes(window.location.href);
+    var json = getNotes(getLocation());
     
     handleResponse(json);
   
-});  
+});
+
 (function (makePost)
 {
     var a = document.createElement("A")

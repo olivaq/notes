@@ -26,7 +26,6 @@ class Note(Base):
     created = Column(DateTime, default=datetime.now)
     
     replies = relationship("Note")
-    #in_reply_to = relationship("Note", back_populates="replies")
     
     def __init__(self, url, note, position=''):
         self.url, self.note, self.position = url, note, position

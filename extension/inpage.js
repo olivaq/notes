@@ -26,6 +26,11 @@
 	initmynotes();*/
 //}();
 
+function getLocation()
+{
+    return window.location.href.split("#")[0];
+}
+
 function makeLinks(parent, id)
 {
     var link = document.createElement('A');
@@ -42,14 +47,14 @@ function addReply(id)
 {
     var note = prompt("Enter note")
     
-    postNote(window.location.href, note, id)
+    postNote(getLocation(), note, id)
 }
 
 function makePost()
 {
     var note = prompt("Enter note")
     
-    postNote(window.location.href, note);
+    postNote(getLocation(), note);
 }
 
 function makeNote(json)
@@ -76,18 +81,3 @@ function handleResponse(response)
         document.body.appendChild( makeNote(response[i]) );
     }
 }
-/*
-var div = document.createElement('DIV');
-div.className = 'update';
-div.innerHTML = response;
-
-document.getElementById(lolid).appendChild(div);
-
-});
-var l = document.createElement('iframe');
-l.style.position = "fixed";
-l.style.right = "10px";
-l.style.top = "10px";
-l.src = 'http://localhost:8080/webpage/' + window.location.href;
-l.style.border = 'none';
-document.body.appendChild(l);*/
