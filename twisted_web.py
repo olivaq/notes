@@ -9,7 +9,7 @@ from twisted.web import server, resource
 
 import json
 
-engine = create_engine('sqlite:///test.db', echo=True)
+engine = create_engine('sqlite:///test.db')
 
 Base = declarative_base()
 
@@ -56,7 +56,7 @@ class NoteResource(resource.Resource):
     
     def render_GET(self, request):
         request.setHeader("content-type", "application/json")
-        
+        self.setHeaders(request)
         
         if not request.args.has_key('url'):
             return ''
@@ -67,8 +67,15 @@ class NoteResource(resource.Resource):
         
         return json.dumps(posts, cls=NoteEncoder)
     
+    def setHeaders(self, request):
+	    request.setHeader('Access-Control-Allow-Origin','*')
+	    request.setHeader('Access-Control-Allow-Methods', 'POST, GET, OPTIONS')
+	    request.setHeader('Access-Control-Max-Age', 1000)
+	    request.setHeader('Access-Control-Allow-Headers', '*')
+    
     def render_POST(self, request):
         session = Session()
+        self.setHeaders(request)
         
         url = request.args['url'][0]
         note = request.args['note'][0]

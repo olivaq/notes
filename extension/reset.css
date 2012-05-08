@@ -1,0 +1,9 @@
+.oba_note_container *
+{
+    background-color:white;
+    width:auto;
+    height:auto;
+    border:none;
+    color:black;
+    font-size:12px;
+}

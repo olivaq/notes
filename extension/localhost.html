@@ -1,0 +1,40 @@
+<html>
+
+<head>
+
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript" src="inpage.js"></script>
+<script type="text/javascript" src="notes.js"></script>
+<link href="reset.css" type="text/css" rel="stylesheet"></link>
+</head>
+
+
+<body>
+
+
+<script type="text/javascript">
+
+function getNoteServer()
+{
+    return 'http://localhost:8080';
+}
+
+
+$(function()
+{
+    var json = getNotes(window.location.href);
+    
+    handleResponse(json);
+  
+});  
+(function (makePost)
+{
+    var a = document.createElement("A")
+    a.onclick = makePost;
+    a.innerHTML = "Make note";
+    a.href="#";
+    document.body.appendChild(a);
+})(makePost);
+</script>
+</body>
+</html>
